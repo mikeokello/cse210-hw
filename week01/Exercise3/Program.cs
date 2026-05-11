@@ -4,21 +4,29 @@ class Program
 {
     static void Main(string[] args)
     {
-        int sum = 0;
-        int number = -1;
+        Random randomGenerator = new Random();
+        int magicNumber = randomGenerator.Next(1, 101);
 
-        Console.WriteLine("Enter numbers to add. Type 0 to finish.");
+        int guess = 0;
 
-        // Loop until the user enters 0
-        while (number != 0)
+        while (guess != magicNumber)
         {
-            Console.Write("Enter a number: ");
+            Console.Write("What is your guess? ");
             string input = Console.ReadLine();
-            number = int.Parse(input);
+            guess = int.Parse(input);
 
-            sum += number;
+            if (guess < magicNumber)
+            {
+                Console.WriteLine("Higher");
+            }
+            else if (guess > magicNumber)
+            {
+                Console.WriteLine("Lower");
+            }
+            else
+            {
+                Console.WriteLine("You guessed it!");
+            }
         }
-
-        Console.WriteLine($"The sum is: {sum}");
     }
 }

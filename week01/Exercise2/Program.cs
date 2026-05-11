@@ -4,25 +4,44 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Ask the user for a number
-        Console.Write("Enter a number: ");
+        Console.Write("What is your grade percentage? ");
         string input = Console.ReadLine();
+        int grade = int.Parse(input);
 
-        // Convert input to integer
-        int number = int.Parse(input);
+        string letter = "";
 
-        // Check if the number is positive, negative, or zero
-        if (number > 0)
+        // Determine letter grade
+        if (grade >= 90)
         {
-            Console.WriteLine("The number is positive.");
+            letter = "A";
         }
-        else if (number < 0)
+        else if (grade >= 80)
         {
-            Console.WriteLine("The number is negative.");
+            letter = "B";
+        }
+        else if (grade >= 70)
+        {
+            letter = "C";
+        }
+        else if (grade >= 60)
+        {
+            letter = "D";
         }
         else
         {
-            Console.WriteLine("The number is zero.");
+            letter = "F";
+        }
+
+        Console.WriteLine($"Your grade is: {letter}");
+
+        // Determine pass or fail
+        if (grade >= 70)
+        {
+            Console.WriteLine("Congratulations! You passed the course.");
+        }
+        else
+        {
+            Console.WriteLine("Keep trying! You can do better next time.");
         }
     }
 }

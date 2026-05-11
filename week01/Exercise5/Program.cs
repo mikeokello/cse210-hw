@@ -4,43 +4,40 @@ class Program
 {
     static void Main(string[] args)
     {
-        int magicNumber = GenerateMagicNumber();
-        int guess = -1;
+        DisplayWelcome();
 
-        Console.WriteLine("Welcome to the Guessing Game!");
+        string userName = PromptUserName();
+        int favoriteNumber = PromptUserNumber();
 
-        // Loop until the user guesses correctly
-        while (guess != magicNumber)
-        {
-            guess = GetUserGuess();
+        int squaredNumber = SquareNumber(favoriteNumber);
 
-            if (guess < magicNumber)
-            {
-                Console.WriteLine("Higher");
-            }
-            else if (guess > magicNumber)
-            {
-                Console.WriteLine("Lower");
-            }
-            else
-            {
-                Console.WriteLine("You guessed it!");
-            }
-        }
+        DisplayResult(userName, squaredNumber);
     }
 
-    // Function to generate a random number
-    static int GenerateMagicNumber()
+    static void DisplayWelcome()
     {
-        Random random = new Random();
-        return random.Next(1, 101); // number between 1 and 100
+        Console.WriteLine("Welcome to the Program!");
     }
 
-    // Function to get user input
-    static int GetUserGuess()
+    static string PromptUserName()
     {
-        Console.Write("What is your guess? ");
-        string input = Console.ReadLine();
-        return int.Parse(input);
+        Console.Write("Please enter your name: ");
+        return Console.ReadLine();
+    }
+
+    static int PromptUserNumber()
+    {
+        Console.Write("Please enter your favorite number: ");
+        return int.Parse(Console.ReadLine());
+    }
+
+    static int SquareNumber(int number)
+    {
+        return number * number;
+    }
+
+    static void DisplayResult(string name, int squaredNumber)
+    {
+        Console.WriteLine($"{name}, the square of your number is {squaredNumber}");
     }
 }
