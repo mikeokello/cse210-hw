@@ -4,9 +4,12 @@ using System.Threading;
 
 public class Activity
 {
-    protected string _name;
-    protected string _description;
+    private string _name;
+    private string _description;
     protected int _duration;
+    
+    // ENHANCEMENT: Static counter to track total activities completed
+    private static int _totalActivitiesCompleted = 0;
 
     public Activity(string name, string description)
 {
@@ -38,6 +41,12 @@ public void DisplayEndingMessage()
 
     Console.WriteLine();
     Console.WriteLine($"You have completed {_duration} seconds of the {_name} Activity.");
+    
+    // ENHANCEMENT: Display activity statistics
+    _totalActivitiesCompleted++;
+    Console.WriteLine();
+    Console.WriteLine($"Total Activities Completed: {_totalActivitiesCompleted}");
+    
     ShowSpinner(3);
 }
 
