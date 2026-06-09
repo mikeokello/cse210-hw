@@ -6,7 +6,9 @@ public class Activity
 {
     private string _name;
     private string _description;
+
     protected int _duration;
+
     
     // ENHANCEMENT: Static counter to track total activities completed
     private static int _totalActivitiesCompleted = 0;
@@ -25,8 +27,21 @@ public void DisplayStartingMessage()
     Console.WriteLine(_description);
     Console.WriteLine();
 
+    // ENHANCEMENT: Validate duration input so the program never crashes on bad values.
     Console.Write("How long, in seconds, would you like for your session? ");
-    _duration = int.Parse(Console.ReadLine());
+    while (true)
+    {
+        string input = Console.ReadLine();
+        if (int.TryParse(input, out int seconds) && seconds > 0)
+        {
+            _duration = seconds;
+            break;
+        }
+
+        Console.WriteLine("Please enter a whole number greater than 0.");
+        Console.Write("How long, in seconds, would you like for your session? ");
+    }
+
 
     Console.WriteLine();
     Console.WriteLine("Get ready...");
